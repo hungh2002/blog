@@ -25,9 +25,8 @@ jobs:
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           port: 22
           script: |
-            sudo apt-get update
             cd /home/${{ secrets.USERNAME }}/Deploy/blog
             git switch main
             git pull origin main
             docker compose -f ./deploy-compose.yaml pull
-            docker-compose -f ./deploy-compose.yaml up -d
+            docker compose -f ./deploy-compose.yaml up -d
