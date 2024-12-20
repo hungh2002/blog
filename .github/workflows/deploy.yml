@@ -26,11 +26,8 @@ jobs:
           port: 22
           script: |
             sudo apt-get update
-            sudo -E bash /home/${{ secrets.USERNAME }}/nodesource_setup.sh
-            sudo apt-get install -y nodejs
-            sudo apt-get install docker-compose-plugin
             cd /home/${{ secrets.USERNAME }}/Deploy/blog
             git switch main
             git pull origin main
             docker compose -f ./deploy-compose.yaml pull
-            docker-compose up -d
+            docker-compose -f ./deploy-compose.yaml up -d
